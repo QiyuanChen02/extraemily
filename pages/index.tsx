@@ -1,13 +1,13 @@
 import { Icon } from '@iconify/react'
 import type { NextPage } from 'next'
 import { useState } from 'react'
-import ActionIcon from './components/actionicon'
-import Drawer from './components/drawer'
-import Logo from './components/logo'
-import Navbar from './components/navbar'
-import SocialIcon from './components/socialicon'
-import RedditYoutube from './layouts/reddityoutube'
-import Twitch from './layouts/twitch'
+import ActionIcon from '../components/actionicon'
+import Drawer from '../components/drawer'
+import Logo from '../components/logo'
+import Navbar from '../components/navbar'
+import SocialIcon from '../components/socialicon'
+import RedditYoutube from '../layouts/reddityoutube'
+import Twitch from '../layouts/twitch'
 
 const SocialLinks = () => {
   return (
