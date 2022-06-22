@@ -1,16 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS reset */
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	padding: 0;
+	margin: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* global colours */
+@layer base {
+	.text-colour {
+		@apply text-white;
+	}
+	.bg-colour {
+		@apply bg-gray-900;
+	}
+	.bg-colour-2 {
+		@apply bg-slate-700;
+	}
+	.accent-colour {
+		@apply text-pink-500;
+	}
+
+	/* Colours for various social media platforms */
+	.bg-twitch-colour {
+		@apply bg-purple-700;
+	}
+	.text-twitch-colour {
+		@apply text-purple-700;
+	}
+	.bg-youtube-colour {
+		@apply bg-red-600;
+	}
+	.text-youtube-colour {
+		@apply text-red-600;
+	}
+	.bg-reddit-colour {
+		@apply bg-orange-600;
+	}
+	.text-reddit-colour {
+		@apply text-orange-600;
+	}
+	.bg-twitter-colour {
+		@apply bg-blue-400;
+	}
+	.text-twitter-colour {
+		@apply bg-blue-400;
+	}
 }
