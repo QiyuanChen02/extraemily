@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const breakpoints = {
+export const sizes = {
 	sm: 640,
 	md: 768,
 	lg: 1024,
@@ -8,7 +8,7 @@ export const breakpoints = {
 	xxl: 1536,
 };
 
-interface useBreakPointProps<T> {
+interface BreakPointsType<T> {
 	base: T;
 	sm?: T;
 	md?: T;
@@ -18,21 +18,21 @@ interface useBreakPointProps<T> {
 }
 
 // hook to calculate the current value of variable based on the current window width
-const useBreakPoint = (props: useBreakPointProps<string | number | boolean>) => {
-	const [value, setValue] = useState(props.base);
+const useBreakPoint = (breakpoints: BreakPointsType<string | number | boolean>) => {
+	const [value, setValue] = useState(breakpoints.base);
 
 	useEffect(() => {
-		const { base, sm, md, lg, xl, xxl } = props;
+		const { base, sm, md, lg, xl, xxl } = breakpoints;
 		const handleResizeWindow = () => {
-			if (window.innerWidth >= breakpoints.xxl && xxl !== undefined) {
+			if (window.innerWidth >= sizes.xxl && xxl !== undefined) {
 				setValue(xxl);
-			} else if (window.innerWidth >= breakpoints.xl && xl !== undefined) {
+			} else if (window.innerWidth >= sizes.xl && xl !== undefined) {
 				setValue(xl);
-			} else if (window.innerWidth >= breakpoints.lg && lg !== undefined) {
+			} else if (window.innerWidth >= sizes.lg && lg !== undefined) {
 				setValue(lg);
-			} else if (window.innerWidth >= breakpoints.md && md !== undefined) {
+			} else if (window.innerWidth >= sizes.md && md !== undefined) {
 				setValue(md);
-			} else if (window.innerWidth >= breakpoints.sm && sm !== undefined) {
+			} else if (window.innerWidth >= sizes.sm && sm !== undefined) {
 				setValue(sm);
 			} else {
 				setValue(base);
@@ -43,7 +43,7 @@ const useBreakPoint = (props: useBreakPointProps<string | number | boolean>) => 
 		return () => {
 			window.removeEventListener("resize", handleResizeWindow);
 		};
-	}, [props]);
+	}, [breakpoints]);
 
 	return value;
 };

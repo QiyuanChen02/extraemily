@@ -28,3 +28,5 @@ export const socialLinks = {
 		url: "https://www.reddit.com/r/ExtraEmily",
 	},
 };
+
+export type Socials = keyof typeof socialLinks;

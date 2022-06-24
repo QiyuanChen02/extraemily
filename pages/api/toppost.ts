@@ -1,15 +1,9 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 
 // Sends the data of the current hottest reddit post to /api/toppost
-export default async function handler(
-	req: NextApiRequest,
-	res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	try {
-		const response = await fetch(
-			"https://www.reddit.com/r/ExtraEmily.json"
-		);
+		const response = await fetch("https://www.reddit.com/r/ExtraEmily.json");
 		const data = await response.json();
 		let i = 0;
 
@@ -25,6 +19,7 @@ export default async function handler(
 			url: "https://reddit.com" + post.permalink,
 		});
 	} catch (err: any) {
+		console.log(err.message);
 		res.status(err.code).send(err);
 	}
 }

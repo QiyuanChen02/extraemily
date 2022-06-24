@@ -55,9 +55,9 @@ a {
 		@apply text-orange-600;
 	}
 	.bg-twitter-colour {
-		@apply bg-blue-400;
+		@apply bg-cyan-400;
 	}
 	.text-twitter-colour {
-		@apply bg-blue-400;
+		@apply text-cyan-400;
 	}
 }

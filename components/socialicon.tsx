@@ -1,12 +1,13 @@
 import { Icon } from "@iconify/react";
-import { socialLinks } from "../helpers/socialmedialinks";
+import { socialLinks, Socials } from "../helpers/socialmedialinks";
 
 interface SocialIconProps {
-    media: keyof typeof socialLinks;
+    media: Socials;
     clickable?: boolean;
+    hasText?: boolean;
 }
 
-const SocialIcon = ({ media, clickable = true }: SocialIconProps) => {
+const SocialIcon = ({ media, clickable = true, hasText = false }: SocialIconProps) => {
 
     const goToWebsite = () => {
         if (clickable) {
@@ -15,9 +16,12 @@ const SocialIcon = ({ media, clickable = true }: SocialIconProps) => {
     }
 
     return (
-        <div className={`w-12 h-12 p-2 rounded-full accent-colour ${clickable ? "cursor-pointer hover:backdrop-brightness-125" : ""}`}>
-            <Icon icon={socialLinks[media].icon} width="100%" height="100%" onClick={goToWebsite} />
-        </div>
+        <button className={`flex items-center cursor-pointer ${hasText ? 'p-4 border-b-2' : 'rounded-full'} ${clickable ? "cursor-pointer hover:backdrop-brightness-125" : ""}`} onClick={goToWebsite}>
+            <div className={`w-12 h-12 p-2 accent-colour`}>
+                <Icon icon={socialLinks[media].icon} width="100%" height="100%" />
+            </div>
+            {hasText && <p className="text-lg accent-colour">{media}</p>}
+        </button>
     )
 }
 

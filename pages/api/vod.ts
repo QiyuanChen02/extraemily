@@ -1,7 +1,5 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import axios from "axios";
-import { getTwitchApi } from "./apiKeys/twitch";
+import { getTwitchApi } from "../../helpers/apiKeys/twitch";
 
 const channelId = "517475551";
 
@@ -12,6 +10,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		const result = await api.get(`https://api.twitch.tv/helix/videos?user_id=${channelId}`);
 		res.status(200).json(result.data.data[0]);
 	} catch (err: any) {
+		console.log(err.message);
 		res.status(err.code).send(err);
 	}
 }

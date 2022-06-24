@@ -26,7 +26,7 @@ const Card1 = ({ imageSrc, upperText, lowerText, buttonText, handleClick, width 
         <div style={dimensions(width, height)} className={`flex flex-col ${height ? '' : 'flex-auto'} p-4 bg-colour-2 rounded-md`}>
             <div className="flex h-2/3">
                 <div className="flex-auto pr-2">
-                    <h3 className={`mb-2 text-lg ${textColour}`}>{upperText}</h3>
+                    <h2 className={`mb-2 text-lg ${textColour}`}>{upperText}</h2>
                     <p className="text-lg text-colour line-clamp-2 2xl:line-clamp-3">{lowerText}</p>
                 </div>
 
@@ -36,7 +36,7 @@ const Card1 = ({ imageSrc, upperText, lowerText, buttonText, handleClick, width 
             </div>
             <div className="flex items-end justify-center h-1/3">
                 <button onClick={handleClick} className={`px-6 rounded ${buttonColour} hover:brightness-125 h-4/5`}>
-                    <p className="text-lg text-slate-50">{buttonText}</p>
+                    <p className="text-lg text-colour">{buttonText}</p>
                 </button>
             </div>
         </div>

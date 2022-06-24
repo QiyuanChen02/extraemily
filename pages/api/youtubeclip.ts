@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const channelId = "UCN4PUx0xlsaGTNPxgQYPjKA";
+const channelId = "UCgCtbaY8AM72JJJJRHh3zzA";
 
 // Sends the data of the most recent video to /api/video
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
