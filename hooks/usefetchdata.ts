@@ -6,17 +6,21 @@ const useFetchData = <T>(route: string) => {
 	const [data, setData] = useState<null | T>(null);
 
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await axios.get<T>(route);
-				setData(response.data);
-				console.log("Successfully fetched data from " + route);
-			} catch (e: any) {
-				setData(null);
-				console.log(e);
-			}
-		};
-		fetchData();
+		axios
+			.get<T>(route)
+			.then((res) => setData(res.data))
+			.catch((e) => setData(null));
+		// const fetchData = async () => {
+		// 	try {
+		// 		const response = await axios.get<T>(route);
+		// 		setData(response.data);
+		// 		console.log("Successfully fetched data from " + route);
+		// 	} catch (e: any) {
+		// 		setData(null);
+		// 		console.log(e);
+		// 	}
+		// };
+		// fetchData();
 	}, [route]);
 
 	return data;
