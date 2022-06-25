@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react'
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import { useState } from 'react'
 import ActionIcon from '../components/actionicon'
 import Drawer from '../components/drawer'
@@ -22,12 +23,17 @@ const Home: NextPage = () => {
   const openModal = () => setDrawerOpen(true)
   const closeModal = () => setDrawerOpen(false)
 
-  const isSmall = useBreakPoint({ base: true, md: false })
+  const isSmall = useBreakPoint({ base: true, sm: false })
+  const isMedium = useBreakPoint({ base: true, md: false })
   return (
-    <div className='absolute min-w-full min-h-screen pb-16 bg-colour'>
+    <div className={`absolute min-w-full min-h-screen pb-16 bg-colour`}>
+      <Head>
+        <title>ExtraEmily</title>
+        <link rel="icon" type="image/png" href="/logo-rounded.png" />
+      </Head>
       <Navbar>
         <Section type="NavbarLogo">
-          <Logo name="ExtraEmily" location="logo.png" hasText={!isSmall} />
+          <Logo name="ExtraEmily" location="logo.png" hasText={!isMedium} />
         </Section>
         <Section type="NavbarLinks">
           {isSmall
