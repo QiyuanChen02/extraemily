@@ -1,3 +1,5 @@
+import useConsole from "../hooks/useconsole"
+
 export const Card2Text = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     return <>{children}</>
 }
@@ -19,6 +21,7 @@ interface Card2Props {
 // Returns a <Card2> component with the given props (needs refactoring)
 const Card2 = ({ width = null, height = null, children = null }: Card2Props) => {
 
+    useConsole(children)
     const text = children && children.filter(child => child.type.name === "Card2Text")[0] || null
     const image = children && children.filter(child => child.type.name === "Card2Image")[0] || null
     const button = children && children.filter(child => child.type.name === "Card2Button")[0] || null
