@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Button from "../components/button"
 import Card2 from "../components/card2"
 import Section from "../components/section"
 import useBreakPoint from "../hooks/usebreakpoint"
@@ -73,11 +74,11 @@ const Twitch = () => {
                         <Image src={vodImageSrc ? vodImageSrc : 'https://vod-secure.twitch.tv/_404/404_processing_320x180.png'} layout="fill" alt="newest VOD thumbnail" />
                     </Section>
                     <Section type="Card2Button">
-                        <button onClick={() => document.location.href = vodData.url} className={`px-6 rounded bg-twitch-colour hover:brightness-125 h-4/5`}>
+                        <Button url={vodData.url} colour="bg-twitch-colour">
                             <p className="text-lg text-colour">Watch VOD</p>
-                        </button>
+                        </Button>
                     </Section>
-                </Card2> : <Card2 height="h-56" />}
+                </Card2> : <Card2 height="h-56" width={isSmall || !isMedium ? 'w-full' : null} />}
 
                 {clipData ? <Card2 height={isSmall ? "h-48" : null} width={isSmall || !isMedium ? 'w-full' : null}>
                     <Section type="Card2Text">
@@ -88,11 +89,11 @@ const Twitch = () => {
                         <Image src={clipData['thumbnail_url']} layout="fill" alt="top twitch clip thumbnail" />
                     </Section>
                     <Section type="Card2Button">
-                        <button onClick={() => document.location.href = clipData.url} className={`px-6 rounded bg-twitch-colour hover:brightness-125 h-4/5`}>
+                        <Button url={clipData.url} colour="bg-twitch-colour">
                             <p className="text-lg text-colour">Watch Clip</p>
-                        </button>
+                        </Button>
                     </Section>
-                </Card2> : <Card2 />}
+                </Card2> : <Card2 height="h-56" width={isSmall || !isMedium ? 'w-full' : null} />}
 
             </div>
         </section >

@@ -8,10 +8,10 @@ export interface LogoProps {
 }
 
 // Returns a <Logo> component with the given props. Note that the text font and image source must still be set.
-const Logo = ({ location, name, rounded = true, hasText = false }: LogoProps) => {
+const Logo = ({ location, name, hasText = false }: LogoProps) => {
     return (
         <div className="flex items-center">
-            <div className={`overflow-hidden relative w-14 h-14 ${rounded && 'rounded-full'}`}>
+            <div className={`overflow-hidden relative w-14 h-14`}>
                 <Image src={"/" + location} alt={`logo of ${name}`} layout="fill" />
             </div>
             {hasText && <h1 className="p-4 text-4xl text-center md:p-6 accent-colour font-logofont">{name}</h1>}

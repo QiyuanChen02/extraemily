@@ -29,7 +29,7 @@ const Home: NextPage = () => {
     <div className={`absolute min-w-full min-h-screen pb-16 bg-colour`}>
       <Head>
         <title>ExtraEmily</title>
-        <link rel="icon" type="image/png" href="/logo-rounded.png" />
+        <link rel="icon" type="image/png" href="/logo.png" />
       </Head>
       <Navbar>
         <Section type="NavbarLogo">

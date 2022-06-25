@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Button from "../components/button"
 import Card2 from "../components/card2"
 import Section from "../components/section"
 import useBreakPoint from "../hooks/usebreakpoint"
@@ -33,11 +34,11 @@ const YoutubeTwitter = () => {
                     <Image src="/twitter-icon.png" layout="fill" alt="twitter logo" />
                 </Section>
                 <Section type="Card2Button">
-                    <button onClick={() => document.location.href = tweetData.url} className={`px-6 rounded bg-twitter-colour hover:brightness-125 h-4/5`}>
+                    <Button url={tweetData.url} colour="bg-twitter-colour">
                         <p className="text-lg text-colour">Go To Tweet</p>
-                    </button>
+                    </Button>
                 </Section>
-            </Card2> : <Card2 height="h-48" />}
+            </Card2> : <Card2 height="h-48" width={isSmall ? 'w-full' : ''} />}
 
             {videoData ? <Card2 height="h-48" width={isSmall ? 'w-full' : ''}>
                 <Section type="Card2Text">
@@ -48,11 +49,11 @@ const YoutubeTwitter = () => {
                     <Image src={videoData.thumbnail} layout="fill" alt="youtube clip thumbnail" />
                 </Section>
                 <Section type="Card2Button">
-                    <button onClick={() => document.location.href = videoData.url} className={`px-6 rounded bg-youtube-colour hover:brightness-125 h-4/5`}>
+                    <Button url={videoData.url} colour="bg-youtube-colour">
                         <p className="text-lg text-colour">Watch Video</p>
-                    </button>
+                    </Button>
                 </Section>
-            </Card2> : <Card2 height="h-48" />}
+            </Card2> : <Card2 height="h-48" width={isSmall ? 'w-full' : ''} />}
 
         </section>
     )
