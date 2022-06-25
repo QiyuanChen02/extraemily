@@ -5,7 +5,8 @@ import ActionIcon from '../components/actionicon'
 import Drawer from '../components/drawer'
 import Footer from '../components/footer'
 import Logo from '../components/logo'
-import Navbar, { NavbarLinks, NavbarLogo } from '../components/navbar'
+import Navbar from '../components/navbar'
+import Section from '../components/section'
 import SocialIcon from '../components/socialicon'
 import { Socials } from '../helpers/socialmedialinks'
 import useBreakPoint from '../hooks/usebreakpoint'
@@ -24,18 +25,18 @@ const Home: NextPage = () => {
   const isSmall = useBreakPoint({ base: true, md: false })
   return (
     <div className='absolute min-w-full min-h-screen pb-16 bg-colour'>
-      {/* <Navbar>
-        <NavbarLogo>
+      <Navbar>
+        <Section type="NavbarLogo">
           <Logo name="ExtraEmily" location="logo.png" hasText={!isSmall} />
-        </NavbarLogo>
-        <NavbarLinks>
+        </Section>
+        <Section type="NavbarLinks">
           {isSmall
             ? <ActionIcon icon="charm:menu-hamburger" action={openModal} />
             : <>
               {socials.map(social => <SocialIcon media={social} key={social} />)}
             </>}
-        </NavbarLinks>
-      </Navbar> */}
+        </Section>
+      </Navbar>
 
       {drawerOpen && <Drawer closeModal={closeModal}>
         {socials.map((social) => <SocialIcon media={social} key={social} hasText />)}

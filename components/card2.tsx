@@ -1,15 +1,3 @@
-export const Card2Text = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
-    return <>{children}</>
-}
-
-export const Card2Image = ({ children }: { children: JSX.Element }) => {
-    return <>{children}</>
-}
-
-export const Card2Button = ({ children }: { children: JSX.Element }) => {
-    return <>{children}</>
-}
-
 interface Card2Props {
     children?: null | JSX.Element[];
     width?: string | null;
@@ -19,9 +7,9 @@ interface Card2Props {
 // Returns a <Card2> component with the given props (needs refactoring)
 const Card2 = ({ width = null, height = null, children = null }: Card2Props) => {
 
-    const text = children && children.filter(child => child.type.name === "Card2Text")[0] || null
-    const image = children && children.filter(child => child.type.name === "Card2Image")[0] || null
-    const button = children && children.filter(child => child.type.name === "Card2Button")[0] || null
+    const text = children && children.filter(child => child.props.type === "Card2Text")[0] || null
+    const image = children && children.filter(child => child.props.type === "Card2Image")[0] || null
+    const button = children && children.filter(child => child.props.type === "Card2Button")[0] || null
 
     return (
         <div className={`flex flex-col ${width ? width : 'flex-1'} ${height ? height : 'flex-1'} p-4 bg-colour-2 rounded-md`}>

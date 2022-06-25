@@ -1,6 +1,6 @@
 import Image from "next/image"
-import Card1 from "../components/card1"
-import Card2, { Card2Button, Card2Image, Card2Text } from "../components/card2"
+import Card2 from "../components/card2"
+import Section from "../components/section"
 import useBreakPoint from "../hooks/usebreakpoint"
 import useFetchData from "../hooks/usefetchdata"
 
@@ -65,48 +65,35 @@ const Twitch = () => {
             <div className="flex flex-col w-full gap-5 mt-5 md:flex-row lg:flex-col lg:gap-8 lg:mt-0 lg:ml-8 lg:w-2/5">
 
                 {vodData ? <Card2 height={isMedium ? "h-48" : null} width={isSmall || !isMedium ? 'w-full' : null}>
-                    <Card2Text>
+                    <Section type="Card2Text">
                         <h2 className="text-lg text-twitch-colour">Twitch - Latest VOD</h2>
                         <p className="text-md text-colour line-clamp-2 2xl:line-clamp-3">{vodData.title}</p>
-                    </Card2Text>
-                    <Card2Image>
+                    </Section>
+                    <Section type="Card2Image">
                         <Image src={vodImageSrc ? vodImageSrc : 'https://vod-secure.twitch.tv/_404/404_processing_320x180.png'} layout="fill" alt="newest VOD thumbnail" />
-                    </Card2Image>
-                    <Card2Button>
+                    </Section>
+                    <Section type="Card2Button">
                         <button onClick={() => document.location.href = vodData.url} className={`px-6 rounded bg-twitch-colour hover:brightness-125 h-4/5`}>
                             <p className="text-lg text-colour">Watch VOD</p>
                         </button>
-                    </Card2Button>
+                    </Section>
                 </Card2> : <Card2 height="h-56" />}
 
                 {clipData ? <Card2 height={isSmall ? "h-48" : null} width={isSmall || !isMedium ? 'w-full' : null}>
-                    <Card2Text>
+                    <Section type="Card2Text">
                         <h2 className="text-lg text-twitch-colour">Twitch - Top Clip</h2>
                         <p className="text-md text-colour line-clamp-2 2xl:line-clamp-3">{clipData.title}</p>
-                    </Card2Text>
-                    <Card2Image>
+                    </Section>
+                    <Section type="Card2Image">
                         <Image src={clipData['thumbnail_url']} layout="fill" alt="top twitch clip thumbnail" />
-                    </Card2Image>
-                    <Card2Button>
+                    </Section>
+                    <Section type="Card2Button">
                         <button onClick={() => document.location.href = clipData.url} className={`px-6 rounded bg-twitch-colour hover:brightness-125 h-4/5`}>
                             <p className="text-lg text-colour">Watch Clip</p>
                         </button>
-                    </Card2Button>
+                    </Section>
                 </Card2> : <Card2 />}
 
-                {/* {vodData && <Card1 imageSrc={vodImageSrc!}
-                    upperText={"Twitch - Latest VOD"}
-                    lowerText={vodData.title}
-                    buttonText={"Watch VOD"}
-                    handleClick={() => document.location.href = vodData.url}
-                />}
-
-                {clipData && <Card1 imageSrc={clipData['thumbnail_url']}
-                    upperText={"Twitch - Top Clip"}
-                    lowerText={clipData.title}
-                    buttonText={"Watch Clip"}
-                    handleClick={() => document.location.href = clipData.url}
-                />} */}
             </div>
         </section >
     )
