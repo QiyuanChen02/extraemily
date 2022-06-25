@@ -24,8 +24,8 @@ const Home: NextPage = () => {
   const isSmall = useBreakPoint({ base: true, md: false })
   return (
     <div className='absolute min-w-full min-h-screen pb-16 bg-colour'>
-
-      <Navbar>
+      <h1>This is some text</h1>
+      {/* <Navbar>
         <NavbarLogo>
           <Logo name="ExtraEmily" location="logo.png" hasText={!isSmall} />
         </NavbarLogo>
@@ -36,7 +36,7 @@ const Home: NextPage = () => {
               {socials.map(social => <SocialIcon media={social} key={social} />)}
             </>}
         </NavbarLinks>
-      </Navbar>
+      </Navbar> */}
 
       {/* {drawerOpen && <Drawer closeModal={closeModal}>
         {socials.map((social) => <SocialIcon media={social} key={social} hasText />)}
