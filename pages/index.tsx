@@ -38,7 +38,7 @@ const Home: NextPage = () => {
         </NavbarLinks>
       </Navbar>
 
-      {drawerOpen && <Drawer closeModal={closeModal}>
+      {/* {drawerOpen && <Drawer closeModal={closeModal}>
         {socials.map((social) => <SocialIcon media={social} key={social} hasText />)}
       </Drawer>}
 
@@ -47,7 +47,7 @@ const Home: NextPage = () => {
         <RedditYoutube />
         <YoutubeTwitter />
       </main>
-      <Footer />
+      <Footer /> */}
     </div>
   )
 }
