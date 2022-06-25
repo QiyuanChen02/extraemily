@@ -2,14 +2,6 @@
 // icons from icon-set.iconify.design
 import useBreakPoint from "../hooks/usebreakpoint";
 
-export const NavbarLogo = ({ children }: { children: JSX.Element }) => {
-    return <>{children}</>
-}
-
-export const NavbarLinks = ({ children }: { children: JSX.Element }) => {
-    return <>{children}</>
-}
-
 interface NavbarProps {
     children: [JSX.Element, JSX.Element];
 }
