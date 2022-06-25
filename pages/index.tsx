@@ -2,6 +2,7 @@ import { Icon } from '@iconify/react'
 import type { NextPage } from 'next'
 import { useState } from 'react'
 import ActionIcon from '../components/actionicon'
+import { Section } from '../components/card2'
 import Drawer from '../components/drawer'
 import Footer from '../components/footer'
 import Logo from '../components/logo'
@@ -25,16 +26,16 @@ const Home: NextPage = () => {
   return (
     <div className='absolute min-w-full min-h-screen pb-16 bg-colour'>
       <Navbar>
-        <NavbarLogo>
+        <Section type="NavbarLogo">
           <Logo name="ExtraEmily" location="logo.png" hasText={!isSmall} />
-        </NavbarLogo>
-        <NavbarLinks>
+        </Section>
+        <Section type="NavbarLinks">
           {isSmall
             ? <ActionIcon icon="charm:menu-hamburger" action={openModal} />
             : <>
               {socials.map(social => <SocialIcon media={social} key={social} />)}
             </>}
-        </NavbarLinks>
+        </Section>
       </Navbar>
 
       {drawerOpen && <Drawer closeModal={closeModal}>

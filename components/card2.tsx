@@ -1,5 +1,9 @@
 import useConsole from "../hooks/useconsole"
 
+export const Section = ({ children }: { children: JSX.Element | JSX.Element[], type: string }) => {
+    return <>{children}</>
+}
+
 export const Card2Text = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
     return <>{children}</>
 }
