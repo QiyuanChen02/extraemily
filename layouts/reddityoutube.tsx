@@ -2,24 +2,25 @@ import Image from "next/image"
 import Button from "../components/button"
 import Card from "../components/card"
 import Section from "../components/section"
-import useFetchData from "../hooks/usefetchdata"
 
-interface PostData {
+export interface PostData {
     title: string,
     thumbnail: string,
     url: string,
 }
 
-interface VideoData {
+export interface VideoData {
     title: string,
     thumbnail: string,
     url: string,
 }
 
-const RedditYoutube = () => {
+export interface RedditYoutubeProps {
+    postData: PostData,
+    videoData: VideoData,
+}
 
-    const postData = useFetchData<PostData>('api/toppost')
-    const videoData = useFetchData<VideoData>('api/video')
+const RedditYoutube = ({ postData, videoData }: RedditYoutubeProps) => {
 
     return (
         <section className="flex flex-col w-full gap-5 mb-5 lg:gap-8 lg:mb-8 md:flex-row">
@@ -57,3 +58,4 @@ const RedditYoutube = () => {
 }
 
 export default RedditYoutube
+

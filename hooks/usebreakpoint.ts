@@ -47,7 +47,7 @@ const useBreakPoint = (breakpoints: BreakPointsType<string | number | boolean>) 
 		};
 	}, [breakpoints]);
 
-	return { value, loading };
+	return [value, loading];
 };
 
 export default useBreakPoint;
