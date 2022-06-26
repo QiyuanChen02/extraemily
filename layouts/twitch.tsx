@@ -2,9 +2,8 @@ import Image from "next/image"
 import Button from "../components/button"
 import Card from "../components/card"
 import Section from "../components/section"
-import useFetchData from "../hooks/usefetchdata"
 
-interface VodData {
+export interface VodData {
     "id": string,
     "stream_id": string,
     "user_id": string,
@@ -23,7 +22,7 @@ interface VodData {
     "duration": string,
     "muted_segments": null
 }
-interface ClipData {
+export interface ClipData {
 
     "id": string,
     "url": string,
@@ -42,10 +41,12 @@ interface ClipData {
     "duration": number
 }
 
-const Twitch = () => {
+export interface TwitchProps {
+    vodData: VodData,
+    clipData: ClipData
+}
 
-    const vodData = useFetchData<VodData>('api/vod')
-    const clipData = useFetchData<ClipData>('api/topclip')
+const Twitch = ({ vodData, clipData }: TwitchProps) => {
 
     const vodImageSrc = vodData && vodData['thumbnail_url'].replace("%{width}", "640").replace("%{height}", "360");
 
