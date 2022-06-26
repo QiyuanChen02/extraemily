@@ -1,12 +1,21 @@
+import { useEffect, useState } from "react";
+
 interface NavbarProps {
-    children: [JSX.Element, JSX.Element];
+    children: null | [JSX.Element, JSX.Element];
 }
 
 // Returns a <Navbar> component with the given props.
 const Navbar = ({ children }: NavbarProps) => {
 
-    const logo = children.filter(child => child.props.type === "NavbarLogo")
-    const links = children.filter(child => child.props.type === "NavbarLinks")
+    const [logo, setLogo] = useState<null | JSX.Element>(null)
+    const [links, setLinks] = useState<null | JSX.Element>(null)
+
+    useEffect(() => {
+        if (children) {
+            setLogo(children.filter(child => child.props.type === "NavbarLogo")[0] || null)
+            setLinks(children.filter(child => child.props.type === "NavbarLinks")[0] || null)
+        }
+    }, [children])
 
     return (
         <nav className="flex items-center w-full h-20 px-4 bg-colour-2 md:h-24 md:px-6">

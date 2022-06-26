@@ -1,17 +1,10 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 
-// hook to calculate the current value of variable based on the current window width
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
+
+// Fetches data from an API endpoint and returns the JSON data
 const useFetchData = <T>(route: string) => {
-	const [data, setData] = useState<null | T>(null);
-
-	useEffect(() => {
-		axios
-			.get<T>(route)
-			.then((res) => setData(res.data))
-			.catch((e) => setData(null));
-	}, [route]);
-
+	const { data } = useSWR<T>(route, fetcher);
 	return data;
 };
 

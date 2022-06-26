@@ -20,6 +20,7 @@ interface BreakPointsType<T> {
 // hook to calculate the current value of variable based on the current window width
 const useBreakPoint = (breakpoints: BreakPointsType<string | number | boolean>) => {
 	const [value, setValue] = useState(breakpoints.base);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const { base, sm, md, lg, xl, xxl } = breakpoints;
@@ -37,6 +38,7 @@ const useBreakPoint = (breakpoints: BreakPointsType<string | number | boolean>) 
 			} else {
 				setValue(base);
 			}
+			setLoading(false);
 		};
 		handleResizeWindow();
 		window.addEventListener("resize", handleResizeWindow);
@@ -45,7 +47,7 @@ const useBreakPoint = (breakpoints: BreakPointsType<string | number | boolean>) 
 		};
 	}, [breakpoints]);
 
-	return value;
+	return { value, loading };
 };
 
 export default useBreakPoint;

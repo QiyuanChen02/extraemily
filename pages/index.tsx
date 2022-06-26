@@ -9,7 +9,7 @@ import Navbar from '../components/navbar'
 import Section from '../components/section'
 import SocialIcon from '../components/socialicon'
 import { Socials } from '../helpers/socialmedialinks'
-import useMediaQuery from '../hooks/usemediaquery'
+import useBreakPoint from '../hooks/usebreakpoint'
 import RedditYoutube from '../layouts/reddityoutube'
 import Twitch from '../layouts/twitch'
 import YoutubeTwitter from '../layouts/youtubetwitter'
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
   const openModal = () => setDrawerOpen(true)
   const closeModal = () => setDrawerOpen(false)
 
-  const isSmall = useMediaQuery(768)
+  const { value: isSmall, loading } = useBreakPoint({ base: true, sm: false })
 
   return (
     <div className={`absolute min-w-full min-h-screen pb-16 bg-colour`}>
@@ -31,16 +31,17 @@ const Home: NextPage = () => {
         <link rel="icon" type="image/png" href="/logo.png" />
       </Head>
       <Navbar>
-        <Section type="NavbarLogo">
+        {!loading ? <Section type="NavbarLogo">
           <Logo name="ExtraEmily" location="logo.png" hasText={!isSmall} />
-        </Section>
-        <Section type="NavbarLinks">
-          {isSmall
-            ? <ActionIcon icon="charm:menu-hamburger" action={openModal} />
-            : <>
-              {socials.map(social => <SocialIcon media={social} key={social} />)}
-            </>}
-        </Section>
+        </Section> : <></>}
+        {!loading ?
+          <Section type="NavbarLinks">
+            {isSmall
+              ? <ActionIcon icon="charm:menu-hamburger" action={openModal} />
+              : <>
+                {socials.map(social => <SocialIcon media={social} key={social} />)}
+              </>}
+          </Section> : <></>}
       </Navbar>
 
       {drawerOpen && <Drawer closeModal={closeModal}>
