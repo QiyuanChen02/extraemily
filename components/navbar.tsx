@@ -1,7 +1,3 @@
-
-// icons from icon-set.iconify.design
-import useBreakPoint from "../hooks/usebreakpoint";
-
 interface NavbarProps {
     children: [JSX.Element, JSX.Element];
 }

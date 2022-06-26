@@ -1,4 +1,3 @@
-import { Icon } from '@iconify/react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useState } from 'react'
@@ -10,7 +9,7 @@ import Navbar from '../components/navbar'
 import Section from '../components/section'
 import SocialIcon from '../components/socialicon'
 import { Socials } from '../helpers/socialmedialinks'
-import useBreakPoint from '../hooks/usebreakpoint'
+import useMediaQuery from '../hooks/usemediaquery'
 import RedditYoutube from '../layouts/reddityoutube'
 import Twitch from '../layouts/twitch'
 import YoutubeTwitter from '../layouts/youtubetwitter'
@@ -23,8 +22,8 @@ const Home: NextPage = () => {
   const openModal = () => setDrawerOpen(true)
   const closeModal = () => setDrawerOpen(false)
 
-  const isSmall = useBreakPoint({ base: true, sm: false })
-  const isMedium = useBreakPoint({ base: true, md: false })
+  const isSmall = useMediaQuery(768)
+
   return (
     <div className={`absolute min-w-full min-h-screen pb-16 bg-colour`}>
       <Head>
@@ -33,7 +32,7 @@ const Home: NextPage = () => {
       </Head>
       <Navbar>
         <Section type="NavbarLogo">
-          <Logo name="ExtraEmily" location="logo.png" hasText={!isMedium} />
+          <Logo name="ExtraEmily" location="logo.png" hasText={!isSmall} />
         </Section>
         <Section type="NavbarLinks">
           {isSmall

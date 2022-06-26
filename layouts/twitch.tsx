@@ -1,8 +1,7 @@
 import Image from "next/image"
 import Button from "../components/button"
-import Card2 from "../components/card2"
+import Card from "../components/card"
 import Section from "../components/section"
-import useBreakPoint from "../hooks/usebreakpoint"
 import useFetchData from "../hooks/usefetchdata"
 
 interface VodData {
@@ -47,56 +46,51 @@ const Twitch = () => {
 
     const vodData = useFetchData<VodData>('api/vod')
     const clipData = useFetchData<ClipData>('api/topclip')
-    const isMedium = useBreakPoint({ base: true, lg: false })
-    const isSmall = useBreakPoint({ base: true, md: false })
 
     const vodImageSrc = vodData && vodData['thumbnail_url'].replace("%{width}", "640").replace("%{height}", "360");
 
     return (
-        <section className="flex flex-col items-stretch mb-5 lg:mb-8 lg:flex-row">
-            <div className="w-full lg:w-3/5 aspect-video">
-                <iframe
-                    src="https://player.twitch.tv/?channel=extraemily&parent=extraemily.com&parent=extraemily.vercel.app&parent=localhost"
-                    height="100%"
-                    width="100%"
-                    allowFullScreen>
-                </iframe>
-            </div>
+        <section className="flex flex-col mb-5 lg:mb-8 lg:flex-row">
+            <iframe
+                src="https://player.twitch.tv/?channel=extraemily&parent=extraemily.com&parent=extraemily.vercel.app&parent=localhost"
+                className="w-full h-full aspect-video lg:w-3/5"
+                allowFullScreen>
+            </iframe>
 
             <div className="flex flex-col w-full gap-5 mt-5 md:flex-row lg:flex-col lg:gap-8 lg:mt-0 lg:ml-8 lg:w-2/5">
 
-                {vodData ? <Card2 height={isMedium ? "h-48" : null} width={isSmall || !isMedium ? 'w-full' : null}>
-                    <Section type="Card2Text">
+                {vodData ? <Card height="h-48 lg:h-1/2" width="w-full md:w-1/2 lg:w-full">
+                    <Section type="CardText">
                         <h2 className="text-lg text-twitch-colour">Twitch - Latest VOD</h2>
                         <p className="text-md text-colour line-clamp-2 2xl:line-clamp-3">{vodData.title}</p>
                     </Section>
-                    <Section type="Card2Image">
+                    <Section type="CardImage">
                         <Image src={vodImageSrc ? vodImageSrc : 'https://vod-secure.twitch.tv/_404/404_processing_320x180.png'} layout="fill" alt="newest VOD thumbnail" />
                     </Section>
-                    <Section type="Card2Button">
+                    <Section type="CardButton">
                         <Button url={vodData.url} colour="bg-twitch-colour">
                             <p className="text-lg text-colour">Watch VOD</p>
                         </Button>
                     </Section>
-                </Card2> : <Card2 height="h-56" width={isSmall || !isMedium ? 'w-full' : null} />}
+                </Card> : <Card height="h-48 lg:h-1/2" width="w-full md:w-1/2 lg:w-full" />}
 
-                {clipData ? <Card2 height={isSmall ? "h-48" : null} width={isSmall || !isMedium ? 'w-full' : null}>
-                    <Section type="Card2Text">
+                {clipData ? <Card height="h-48 lg:h-1/2" width="w-full md:w-1/2 lg:w-full">
+                    <Section type="CardText">
                         <h2 className="text-lg text-twitch-colour">Twitch - Top Clip</h2>
                         <p className="text-md text-colour line-clamp-2 2xl:line-clamp-3">{clipData.title}</p>
                     </Section>
-                    <Section type="Card2Image">
+                    <Section type="CardImage">
                         <Image src={clipData['thumbnail_url']} layout="fill" alt="top twitch clip thumbnail" />
                     </Section>
-                    <Section type="Card2Button">
+                    <Section type="CardButton">
                         <Button url={clipData.url} colour="bg-twitch-colour">
                             <p className="text-lg text-colour">Watch Clip</p>
                         </Button>
                     </Section>
-                </Card2> : <Card2 height="h-56" width={isSmall || !isMedium ? 'w-full' : null} />}
+                </Card> : <Card height="h-48 lg:h-1/2" width="w-full md:w-1/2 lg:w-full" />}
 
             </div>
-        </section >
+        </section>
     )
 }
 

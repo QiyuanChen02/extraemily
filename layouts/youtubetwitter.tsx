@@ -1,8 +1,7 @@
 import Image from "next/image"
 import Button from "../components/button"
-import Card2 from "../components/card2"
+import Card from "../components/card"
 import Section from "../components/section"
-import useBreakPoint from "../hooks/usebreakpoint"
 import useFetchData from "../hooks/usefetchdata"
 
 interface TweetData {
@@ -20,40 +19,39 @@ const YoutubeTwitter = () => {
 
     const tweetData = useFetchData<TweetData>('api/tweet')
     const videoData = useFetchData<VideoData>('api/youtubeclip')
-    const isSmall = useBreakPoint({ base: true, md: false })
 
     return (
         <section className="flex flex-col w-full gap-5 mb-5 lg:gap-8 lg:mb-8 md:flex-row">
 
-            {tweetData ? <Card2 height="h-48" width={isSmall ? 'w-full' : ''}>
-                <Section type="Card2Text">
+            {tweetData ? <Card height="h-48 xl:h-60" width="w-full md:w-1/2">
+                <Section type="CardText">
                     <h2 className="text-lg text-twitter-colour">Twitter - Most recent tweet</h2>
                     <p className="text-md text-colour line-clamp-2 2xl:line-clamp-3">{tweetData.tweet}</p>
                 </Section>
-                <Section type="Card2Image">
+                <Section type="CardImage">
                     <Image src="/twitter-icon.png" layout="fill" alt="twitter logo" />
                 </Section>
-                <Section type="Card2Button">
+                <Section type="CardButton">
                     <Button url={tweetData.url} colour="bg-twitter-colour">
                         <p className="text-lg text-colour">Go To Tweet</p>
                     </Button>
                 </Section>
-            </Card2> : <Card2 height="h-48" width={isSmall ? 'w-full' : ''} />}
+            </Card> : <Card height="h-48 xl:h-60" width="w-full md:w-1/2" />}
 
-            {videoData ? <Card2 height="h-48" width={isSmall ? 'w-full' : ''}>
-                <Section type="Card2Text">
+            {videoData ? <Card height="h-48 xl:h-60" width="w-full md:w-1/2">
+                <Section type="CardText">
                     <h2 className="text-lg text-youtube-colour">Youtube - Fresh clip</h2>
                     <p className="text-md text-colour line-clamp-2 2xl:line-clamp-3">{videoData.title}</p>
                 </Section>
-                <Section type="Card2Image">
+                <Section type="CardImage">
                     <Image src={videoData.thumbnail} layout="fill" alt="youtube clip thumbnail" />
                 </Section>
-                <Section type="Card2Button">
+                <Section type="CardButton">
                     <Button url={videoData.url} colour="bg-youtube-colour">
                         <p className="text-lg text-colour">Watch Video</p>
                     </Button>
                 </Section>
-            </Card2> : <Card2 height="h-48" width={isSmall ? 'w-full' : ''} />}
+            </Card> : <Card height="h-48 xl:h-60" width="w-full md:w-1/2" />}
 
         </section>
     )

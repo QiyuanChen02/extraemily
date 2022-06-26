@@ -1,6 +1,3 @@
-import React from "react";
-import useConsole from "../hooks/useconsole";
-
 interface DrawerProps {
     closeModal: () => void;
     children: JSX.Element[];
@@ -9,7 +6,6 @@ interface DrawerProps {
 // Returns a <Drawer> component for the menu
 const Drawer = ({ closeModal, children }: DrawerProps) => {
 
-    useConsole(children)
     return (
         <>
             <div className="fixed top-0 left-0 w-full h-screen bg-black opacity-50" onClick={closeModal}>
