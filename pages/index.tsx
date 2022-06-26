@@ -30,6 +30,7 @@ const Home: NextPage<IndexProps> = ({ postData, videoData, vodData, clipData, tw
       <Head>
         <title>ExtraEmily</title>
         <link rel="icon" type="image/png" href="/logo.png" />
+        <meta name="description" content="A website for the Twitch streamer ExtraEmily" />
       </Head>
       <Navbar>
         {!loading ? <Section type="NavbarLogo">
@@ -61,7 +62,7 @@ const Home: NextPage<IndexProps> = ({ postData, videoData, vodData, clipData, tw
 
 export default Home
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
   const fetchData = async <T,>(url: string): Promise<T> => {
     const response = await fetch(url)
@@ -77,5 +78,5 @@ export async function getServerSideProps() {
   const tweetData = await fetchData<TweetData>(`${server}/api/tweet`)
   const youtubeclipData = await fetchData<YoutubeclipData>(`${server}/api/youtubeclip`)
 
-  return { props: { postData, videoData, vodData, clipData, tweetData, youtubeclipData } }
+  return { props: { postData, videoData, vodData, clipData, tweetData, youtubeclipData }, revalidate: 60 }
 }
