@@ -4,7 +4,7 @@ interface CardProps {
     height: string | null;
 }
 
-// Returns a <Card> component with the given props (needs refactoring)
+// Returns a specific card with text, an image, and a button
 const Card = ({ width, height, children = null }: CardProps) => {
 
     const text = children && children.filter(child => child.props.type === "CardText")[0] || null

@@ -3,7 +3,7 @@ interface DrawerProps {
     children: JSX.Element[];
 }
 
-// Returns a <Drawer> component for the menu
+// Returns a <Drawer> component for the navbar links
 const Drawer = ({ closeModal, children }: DrawerProps) => {
 
     return (

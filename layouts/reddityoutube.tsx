@@ -16,15 +16,14 @@ export interface VideoData {
 }
 
 export interface RedditYoutubeProps {
-    postData: PostData,
-    videoData: VideoData,
+    postData: PostData | null,
+    videoData: VideoData | null,
 }
 
 const RedditYoutube = ({ postData, videoData }: RedditYoutubeProps) => {
 
     return (
         <section className="flex flex-col w-full gap-5 mb-5 lg:gap-8 lg:mb-8 md:flex-row">
-
             {videoData ? <Card height="h-48 xl:h-60" width="w-full md:w-1/2">
                 <Section type="CardText">
                     <h2 className="text-lg text-youtube-colour">Youtube - Newest Video</h2>

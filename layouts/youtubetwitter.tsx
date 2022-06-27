@@ -15,8 +15,8 @@ export interface YoutubeclipData {
 }
 
 export interface YoutubeTwitterProps {
-    tweetData: TweetData,
-    youtubeclipData: YoutubeclipData,
+    tweetData: TweetData | null,
+    youtubeclipData: YoutubeclipData | null,
 }
 
 const YoutubeTwitter = ({ tweetData, youtubeclipData }: YoutubeTwitterProps) => {

@@ -7,7 +7,7 @@ export interface LogoProps {
     hasText?: boolean;
 }
 
-// Returns a <Logo> component with the given props. Note that the text font and image source must still be set.
+// Returns a <Logo> component
 const Logo = ({ location, name, hasText = false }: LogoProps) => {
     return (
         <div className="flex items-center">

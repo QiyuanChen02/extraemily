@@ -6,7 +6,7 @@ interface ButtonProps {
     children: JSX.Element | JSX.Element[];
 }
 
-// Returns a <Button> component with the given props (needs refactoring)
+// Returns a text <Button> component
 const Button = ({ url, colour, children }: ButtonProps) => {
 
     const router = useRouter()

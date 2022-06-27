@@ -18,9 +18,11 @@ interface BreakPointsType<T> {
 }
 
 // hook to calculate the current value of variable based on the current window width
-const useBreakPoint = (breakpoints: BreakPointsType<string | number | boolean>) => {
+const useBreakPoint = (
+	breakpoints: BreakPointsType<string | number | boolean>
+): [string | number | boolean, boolean] => {
 	const [value, setValue] = useState(breakpoints.base);
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState<boolean>(true);
 
 	useEffect(() => {
 		const { base, sm, md, lg, xl, xxl } = breakpoints;

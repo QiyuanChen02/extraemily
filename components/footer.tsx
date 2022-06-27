@@ -1,4 +1,4 @@
-// Returns a <Footer> component with the given props.
+// Returns a <Footer> component
 const Footer = () => {
 
     return (

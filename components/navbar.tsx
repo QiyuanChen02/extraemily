@@ -4,7 +4,7 @@ interface NavbarProps {
     children: null | [JSX.Element, JSX.Element];
 }
 
-// Returns a <Navbar> component with the given props.
+// Returns a <Navbar> component
 const Navbar = ({ children }: NavbarProps) => {
 
     const [logo, setLogo] = useState<null | JSX.Element>(null)

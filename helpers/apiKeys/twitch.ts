@@ -1,6 +1,5 @@
 import axios from "axios";
 
-// Returns the twitch authorised api
 export function getTwitchApi() {
 	return axios.create({
 		headers: {

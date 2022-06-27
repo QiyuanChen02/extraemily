@@ -42,8 +42,8 @@ export interface ClipData {
 }
 
 export interface TwitchProps {
-    vodData: VodData,
-    clipData: ClipData
+    vodData: VodData | null,
+    clipData: ClipData | null
 }
 
 const Twitch = ({ vodData, clipData }: TwitchProps) => {
@@ -55,6 +55,7 @@ const Twitch = ({ vodData, clipData }: TwitchProps) => {
             <iframe
                 src="https://player.twitch.tv/?channel=extraemily&parent=extraemily.com&parent=extraemily.vercel.app&parent=localhost"
                 className="w-full h-full aspect-video lg:w-3/5"
+                title="Twitch Player Embed"
                 allowFullScreen>
             </iframe>
 

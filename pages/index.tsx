@@ -7,8 +7,7 @@ import Footer from '../components/footer'
 import Logo from '../components/logo'
 import Navbar from '../components/navbar'
 import Section from '../components/section'
-import SocialIcon from '../components/socialicon'
-import { Socials } from '../helpers/socialmedialinks'
+import SocialIcon, { Socials } from '../components/socialicon'
 import useBreakPoint from '../hooks/usebreakpoint'
 import RedditYoutube, { PostData, RedditYoutubeProps, VideoData } from '../layouts/reddityoutube'
 import Twitch, { ClipData, TwitchProps, VodData } from '../layouts/twitch'
@@ -32,18 +31,19 @@ const Home: NextPage<IndexProps> = ({ postData, videoData, vodData, clipData, tw
         <link rel="icon" type="image/png" href="/logo.png" />
         <meta name="description" content="A website for the Twitch streamer ExtraEmily" />
       </Head>
+
       <Navbar>
-        {!loading ? <Section type="NavbarLogo">
+        <Section type="NavbarLogo" display={!loading}>
           <Logo name="ExtraEmily" location="logo.png" hasText={!isSmall} />
-        </Section> : <></>}
-        {!loading ?
-          <Section type="NavbarLinks">
-            {isSmall
-              ? <ActionIcon icon="charm:menu-hamburger" action={openModal} />
-              : <>
-                {socials.map(social => <SocialIcon media={social} key={social} />)}
-              </>}
-          </Section> : <></>}
+        </Section>
+
+        <Section type="NavbarLinks" display={!loading}>
+          {isSmall
+            ? <ActionIcon icon="charm:menu-hamburger" action={openModal} ariaLabel={"Open Drawer"} />
+            : <>
+              {socials.map(social => <SocialIcon media={social} key={social} />)}
+            </>}
+        </Section>
       </Navbar>
 
       {drawerOpen && <Drawer closeModal={closeModal}>
@@ -55,6 +55,7 @@ const Home: NextPage<IndexProps> = ({ postData, videoData, vodData, clipData, tw
         <RedditYoutube postData={postData} videoData={videoData} />
         <YoutubeTwitter tweetData={tweetData} youtubeclipData={youtubeclipData} />
       </main>
+
       <Footer />
     </div>
   )
@@ -62,12 +63,18 @@ const Home: NextPage<IndexProps> = ({ postData, videoData, vodData, clipData, tw
 
 export default Home
 
+// Fetching data serverside
 export async function getStaticProps() {
 
-  const fetchData = async <T,>(url: string): Promise<T> => {
-    const response = await fetch(url)
-    const data = await response.json()
-    return data
+  const fetchData = async <T,>(url: string) => {
+    try {
+      const response = await fetch(url)
+      const data = await response.json()
+      return data as T
+    } catch (e) {
+      console.error(e)
+      return null
+    }
   }
 
   const server = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://extraemily.vercel.app'
