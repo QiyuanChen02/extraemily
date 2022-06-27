@@ -30,6 +30,11 @@ const Home: NextPage<IndexProps> = ({ postData, videoData, vodData, clipData, tw
         <title>ExtraEmily</title>
         <link rel="icon" type="image/png" href="/logo.png" />
         <meta name="description" content="A website for the Twitch streamer ExtraEmily" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="ExtraEmily" />
+        <meta property="og:description" content="A website for the Twitch streamer ExtraEmily" />
+        <meta property="og:url" content="https://extraemily.vercel.app" />
+        <meta property="og:image" content="http://extraemily.vercel.app/_next/image?url=%2Flogo.png&w=2048&q=75" />
       </Head>
 
       <Navbar>
