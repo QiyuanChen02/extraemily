@@ -1,16 +1,29 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { getTwitchApi } from "../../helpers/apiKeys/twitch";
+import axios from "axios"
+import type { NextApiRequest, NextApiResponse } from "next"
 
-const channelId = "517475551";
+const channelId = "517475551"
 
 // Sends the data of the most recent vod to /api/vod
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-	const api = getTwitchApi();
+export default async function handler(
+	req: NextApiRequest,
+	res: NextApiResponse
+) {
+	console.log(process.env)
+
 	try {
-		const result = await api.get(`https://api.twitch.tv/helix/videos?user_id=${channelId}`);
-		res.status(200).json(result.data.data[0]);
+		const result = await axios.get(
+			`https://api.twitch.tv/helix/videos?user_id=${channelId}`,
+			{
+				headers: {
+					"Client-ID": process.env.TWITCH_CLIENT_ID!,
+					Authorization: process.env.TWITCH_AUTHORIZATION!
+				}
+			}
+		)
+
+		res.status(200).json(result.data.data[0])
 	} catch (err: any) {
-		console.log(err.message);
-		res.status(err.code).send(err);
+		console.log("error: ", err)
+		res.status(err.code).send(err)
 	}
 }
